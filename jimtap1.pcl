@@ -1,0 +1,534 @@
+######################################################
+# AB & Tap                                           #
+# T1: Signal to Tap; T2: Lag 1 to 8                  #
+# Does tap aid T2 identification?                    #
+######################################################
+
+####################################################################
+int cblocks=8;                         # total number of blocks
+int ctrials=10;                         # number of trials per block
+array <int> trialtype[60][6];      # ctrials is the number of trials
+string path="tap1_";
+####################################################################
+
+string fn;
+string confirm;
+int z; 
+int zz;
+
+loop z=1 until z==2
+begin
+   number_text.set_caption ("Type in participant number (two digits max)...\n" );
+   number_text.redraw();
+   number_trial.present();
+   system_keyboard.set_max_length(12);
+   fn = system_keyboard.get_input();
+   number_text.set_caption ("Participant number is: " + fn + "\nIs this correct (y/n)?" );
+   number_text.redraw();
+   number_trial.present();
+   system_keyboard.set_max_length(1);
+   confirm = system_keyboard.get_input();
+   if (confirm=="y" || confirm=="Y") then
+      z=z+1
+   end;   
+end;
+
+debug_out.open (path+fn+".dat");
+debug_out.print ("Trial #, Distractor, Lag, T1, T2, Tap RT, T2 Key\n");
+
+array<string> rsvpid[9];
+rsvpid[1]="1";
+rsvpid[2]="2";
+rsvpid[3]="3";
+rsvpid[4]="4";
+rsvpid[5]="5";
+rsvpid[6]="6";
+rsvpid[7]="7";
+rsvpid[8]="8";
+rsvpid[9]="9";
+
+array<int> lag[4];
+lag[1] = 1;
+lag[2] = 6;
+
+array<string> distid[9];
+distid[1]="1";
+distid[2]="2";
+distid[3]="3";
+distid[4]="4";
+distid[5]="5";
+distid[6]="6";
+distid[7]="7";
+distid[8]="8";
+distid[9]="9";
+
+array<string> targid[22];
+targid[1]="A";
+targid[2]="B";
+targid[3]="C";
+targid[4]="D";
+targid[5]="E";
+targid[6]="F";
+targid[7]="G";
+targid[8]="H";
+targid[9]="J";
+targid[10]="K";
+targid[11]="L";
+targid[12]="M";
+targid[13]="N";
+targid[14]="R";
+targid[15]="S";
+targid[16]="T";
+targid[17]="U";
+targid[18]="V";
+targid[19]="W";
+targid[20]="X";
+targid[21]="Y";
+targid[22]="***";
+
+array<string> mask[5];
+mask[1]="@";
+mask[2]="#";
+mask[3]="%";
+mask[4]="&";
+mask[5]="?";
+
+sub
+   init_conds (array<int,2>& trialarr) # name of subroutine; type of argument passed to it; name
+begin                                  # of variable to be used in subroutine
+   int j;
+   int k;
+   int l;
+   int f;
+   int m;
+   int zx;                
+   int counter=0;
+   loop f=1 until f==5
+   begin
+    loop k=1 until k==16
+      begin
+            counter=counter+1;
+				trialarr[counter][1]=1;       #distractor (1=symbols, 2=pseudoletters)
+            trialarr[counter][2]=k;       #Lag (1=100ms, 2=200ms ... 8=800ms)
+            trialarr[counter][3]=-99;     #T1  
+            trialarr[counter][4]=-99;     #T2 
+            trialarr[counter][5]=-99;     #Tap Response RT
+            trialarr[counter][6]=-99;     #T2 Response
+        k=k+1;
+      end; # k loop
+   f=f+1;
+   end;
+end; 
+sub
+   shuffle (array<int,2>& trialarr) # name of subroutine; type of argument passed to it; name
+begin                               # of variable to be used in subroutine
+   int j;
+   int pos1;
+   int pos2;
+   int temp1;
+   int temp2;
+   int temp3;                   
+   int temp4;
+   loop j=1 until j==61 #fisher yates shuffle
+   begin
+      pos1 = random(j,60); #choose a random number from [current index] to [end]
+		#swap [current index] with [randomly chosen index] 
+      temp1 = trialarr[j][1];
+      temp2 = trialarr[j][2];
+      trialarr[j][1] = trialarr[pos1][1];
+      trialarr[j][2] = trialarr[pos1][2];
+      trialarr[pos1][1] = temp1;
+      trialarr[pos1][2] = temp2;
+		#as we iterate throught the array, we leave a shuffled deck in our path
+      j=j+1;
+   end;  
+end; 
+
+sub
+   outstuff (int& block, array<int,2>& trialarr) # name of subroutine; type of argument passed to it; name
+begin                                            # of variable to be used in subroutine
+   int j;      
+   loop j=1 until j==61
+   begin
+	debug_out.print (j);		            # trial
+	debug_out.print (",");
+	debug_out.print (trialarr[j][1]);   # distractor type
+	debug_out.print (",");
+	debug_out.print (trialarr[j][2]);	# lag
+	debug_out.print (",");   
+   debug_out.print (trialarr[j][3]);	# t1
+	debug_out.print (",");
+	debug_out.print (trialarr[j][4]);   # t2
+	debug_out.print (",");	
+	debug_out.print (trialarr[j][5]);	# tap RT
+	debug_out.print (",");
+	debug_out.print (trialarr[j][6]);	# T2 resp
+	debug_out.print ("\n");
+	j=j+1;
+   end;
+end;
+
+int i;
+int j;
+int k;
+int l;
+int l1;
+int l2;
+int l3;
+int ll;
+int m;
+int n;
+int nn;
+int o;
+int p;
+int p1;
+int p2;
+int p3;
+int pp;
+int q;
+int r;
+int lastr;  
+int dummy;
+int t1acc;
+int t2acc;
+int xblocks;
+int xtrials;
+int bbbueno;
+
+output_port oport = output_port_manager.get_port(1);
+
+inst_trial.present();
+
+loop xblocks=1 until xblocks == cblocks+1              #actually, do the experiment
+begin
+  init_conds (trialtype);
+  shuffle (trialtype);
+  
+   loop xtrials=1 until xtrials == ctrials+1
+   begin   
+	
+	# This part displays the fixation
+	fix_trial.present();
+	
+	# This part does the 6-12 RSVP items between the offset of fixation and onset of T1   
+   if (trialtype[xtrials][1]==1) then
+      l1=random(6,12);
+      lastr=0;
+      loop l2=1 until l2==l1+1
+      begin
+      	dummy=1;                      #pick a digit, but don't repeat the last one
+   	   loop dummy=1 until dummy==2
+   	   begin
+            r=random(1,9);
+            if (r!=lastr) then
+               dummy=dummy+1;
+               lastr=r;
+            end;
+         end;   	
+ 	   rsvp.set_caption(distid[r]);
+   	rsvp.redraw();
+   	rsvpdig_event.set_duration(9);
+   	rsvpdig_trial.present();
+   
+   	isi_event.set_stimulus(default);
+	   isi_event.set_event_code("ISI");
+	   isi_event.set_duration(39);
+	   isi_trial.present(); 
+      l2=l2+1; 
+      end;
+	end;
+
+	# This part does the "***" alert to tap
+	oport.send_code(1);
+	trialtype[xtrials][3] = 22;  
+	t1.set_caption(targid[trialtype[xtrials][3]]);
+   t1.redraw();
+	t1_event.set_duration(9);
+	bbbueno=clock.time();
+	t1_trial.present();
+	
+   # This part displays the ISI                   
+	isi_event.set_stimulus(default);
+	isi_event.set_event_code("ISI");
+	isi_event.set_duration(39);
+	isi_trial.present();
+
+   if (trialtype[xtrials][1]==1) then
+		loop l2=1 until l2==41
+		begin
+			dummy=1;                      #pick a digit, but don't repeat the last one
+			loop dummy=1 until dummy==2
+			begin
+          r=random(1,9);
+          if (r!=lastr) then
+             dummy=dummy+1;
+             lastr=r;
+          end;
+			end;
+			if (l2==1) then
+				postt1_1.set_caption(distid[r]);
+				postt1_1.redraw();
+			end;
+			if (l2==2) then
+				postt1_2.set_caption(distid[r]);
+				postt1_2.redraw();
+			end;
+			if (l2==3) then
+				postt1_3.set_caption(distid[r]);
+				postt1_3.redraw();
+			end;
+			if (l2==4) then
+				postt1_4.set_caption(distid[r]);
+				postt1_4.redraw();
+			end;
+			if (l2==5) then
+				postt1_5.set_caption(distid[r]);
+				postt1_5.redraw();
+			end;
+			if (l2==6) then
+				postt1_6.set_caption(distid[r]);
+				postt1_6.redraw();
+			end;
+			if (l2==7) then
+				postt1_7.set_caption(distid[r]);
+				postt1_7.redraw();
+			end;
+			if (l2==8) then
+				postt1_8.set_caption(distid[r]);
+				postt1_8.redraw();
+			end;
+			if (l2==9) then
+				postt1_9.set_caption(distid[r]);
+				postt1_9.redraw();
+			end;
+			if (l2==10) then
+				postt1_10.set_caption(distid[r]);
+				postt1_10.redraw();
+			end;
+			if (l2==11) then
+				postt1_11.set_caption(distid[r]);
+				postt1_11.redraw();
+			end;
+			if (l2==12) then
+				postt1_12.set_caption(distid[r]);
+				postt1_12.redraw();
+			end;
+			if (l2==13) then
+				postt1_13.set_caption(distid[r]);
+				postt1_13.redraw();
+			end;
+			if (l2==14) then
+				postt1_14.set_caption(distid[r]);
+				postt1_14.redraw();
+			end;
+			if (l2==15) then
+				postt1_15.set_caption(distid[r]);
+				postt1_15.redraw();
+			end;
+			if (l2==16) then
+				postt1_16.set_caption(distid[r]);
+				postt1_16.redraw();
+			end;
+			if (l2==17) then
+				postt1_17.set_caption(distid[r]);
+				postt1_17.redraw();
+			end;
+			if (l2==18) then
+				postt1_18.set_caption(distid[r]);
+				postt1_18.redraw();
+			end;
+			if (l2==19) then
+				postt1_19.set_caption(distid[r]);
+				postt1_19.redraw();
+			end;
+			if (l2==20) then
+				postt1_20.set_caption(distid[r]);
+				postt1_20.redraw();
+			end;
+			if (l2==21) then
+				postt1_21.set_caption(distid[r]);
+				postt1_21.redraw();
+			end;
+			if (l2==22) then
+				postt1_22.set_caption(distid[r]);
+				postt1_22.redraw();
+			end;
+			if (l2==23) then
+				postt1_23.set_caption(distid[r]);
+				postt1_23.redraw();
+			end;
+			if (l2==24) then
+				postt1_24.set_caption(distid[r]);
+				postt1_24.redraw();
+			end;
+			if (l2==25) then
+				postt1_25.set_caption(distid[r]);
+				postt1_25.redraw();
+			end;
+			if (l2==26) then
+				postt1_26.set_caption(distid[r]);
+				postt1_26.redraw();
+			end;
+			if (l2==27) then
+				postt1_27.set_caption(distid[r]);
+				postt1_27.redraw();
+			end;
+			if (l2==28) then
+				postt1_28.set_caption(distid[r]);
+				postt1_28.redraw();
+			end;
+			if (l2==29) then
+				postt1_29.set_caption(distid[r]);
+				postt1_29.redraw();
+			end;
+			if (l2==30) then
+				postt1_30.set_caption(distid[r]);
+				postt1_30.redraw();
+			end;
+			if (l2==31) then
+				postt1_31.set_caption(distid[r]);
+				postt1_31.redraw();
+			end;
+			if (l2==32) then
+				postt1_32.set_caption(distid[r]);
+				postt1_32.redraw();
+			end;
+			if (l2==33) then
+				postt1_33.set_caption(distid[r]);
+				postt1_33.redraw();
+			end;
+			if (l2==34) then
+				postt1_34.set_caption(distid[r]);
+				postt1_34.redraw();
+			end;
+			if (l2==35) then
+				postt1_35.set_caption(distid[r]);
+				postt1_35.redraw();
+			end;
+			if (l2==36) then
+				postt1_36.set_caption(distid[r]);
+				postt1_36.redraw();
+			end;
+			if (l2==37) then
+				postt1_37.set_caption(distid[r]);
+				postt1_37.redraw();
+			end;
+			if (l2==38) then
+				postt1_38.set_caption(distid[r]);
+				postt1_38.redraw();
+			end;
+			if (l2==39) then
+				postt1_39.set_caption(distid[r]);
+				postt1_39.redraw();
+			end;
+			if (l2==40) then
+				postt1_40.set_caption(distid[r]);
+				postt1_40.redraw();
+			end;
+			l2=l2+1;
+		end;
+    end;
+	    
+	# This part does the second target (letter)
+	loop z=1 until z==2
+	begin
+	   trialtype[xtrials][4] = random (1, 21);
+	   if (trialtype[xtrials][4] != trialtype[xtrials][3]) then
+	      z=z+1;
+	   end;
+   end;
+	if (trialtype[xtrials][2]==1) then
+		postt1_2.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_2.redraw();
+	end;
+	if (trialtype[xtrials][2]==2) then
+		postt1_4.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_4.redraw();
+	end;
+	if (trialtype[xtrials][2]==3) then
+		postt1_6.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_6.redraw();
+	end;
+	if (trialtype[xtrials][2]==4) then
+		postt1_8.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_8.redraw();
+	end;
+	if (trialtype[xtrials][2]==5) then
+		postt1_10.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_10.redraw();
+	end;
+	if (trialtype[xtrials][2]==6) then
+		postt1_12.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_12.redraw();
+	end;
+	if (trialtype[xtrials][2]==7) then
+		postt1_14.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_14.redraw();
+	end;
+	if (trialtype[xtrials][2]==8) then
+		postt1_16.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_16.redraw();
+	end;
+	if (trialtype[xtrials][2]==9) then
+		postt1_18.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_18.redraw();
+	end;
+	if (trialtype[xtrials][2]==10) then
+		postt1_20.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_20.redraw();
+	end;
+	if (trialtype[xtrials][2]==11) then
+		postt1_22.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_22.redraw();
+	end;
+	if (trialtype[xtrials][2]==12) then
+		postt1_24.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_24.redraw();
+	end;
+	if (trialtype[xtrials][2]==13) then
+		postt1_26.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_26.redraw();
+	end;
+	if (trialtype[xtrials][2]==14) then
+		postt1_28.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_28.redraw();
+	end;
+	if (trialtype[xtrials][2]==15) then
+		postt1_30.set_caption(targid[trialtype[xtrials][4]]);
+		postt1_30.redraw();
+	end;
+	
+	postt1_trial.present();
+
+   response_data last = response_manager.last_response_data();
+
+	trialtype[xtrials][5] = last.time() - bbbueno;
+	
+	if (trialtype[xtrials][5]<200) then
+		if (trialtype[xtrials][5]<0) then
+			notap_trial.present();
+		else
+			toofast_trial.present();
+		end;
+	end;
+	if (trialtype[xtrials][5]>1500) then
+		tooslow_trial.present();
+	end;
+	if (trialtype[xtrials][5]>199 && trialtype[xtrials][5]<1501) then
+		justright_trial.present();
+	end;
+
+	# This part displays a blank screen and waits for the T2 response
+	t2resp_event.set_target_button(trialtype[xtrials][4]);		#set target button to T2 value
+	t2resp_trial.present();
+	trialtype[xtrials][6] = response_manager.last_response();
+
+	xtrials=xtrials+1; 
+   end;
+   outstuff (xblocks, trialtype);       #output trial data to a file named above
+   xblocks=xblocks+1;
+if (xblocks < cblocks+1) then
+	block_trial.present();
+end;
+end;   
+done_trial.present();
