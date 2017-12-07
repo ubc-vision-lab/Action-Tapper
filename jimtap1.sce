@@ -51,12 +51,32 @@ picture { bitmap { filename = "plet11.bmp";}; x=0; y=0;};
 } pseudo;
 
 array {
-   LOOP $i 40;
-   text {
-      caption = "A";
-      font_size = 28;
-      font_color = 167,167,167;
-      preload = false;
+   stimulus_event{
+      picture {
+         text {
+            caption = "A";
+         font_size = 28;
+         font_color = 167,167,167;
+         preload = false;
+         }
+         x = 0;
+         y = 0;
+      };
+      time = 0;
+   };
+   LOOP $i 39;
+   stimulus_event{
+      picture {
+         text {
+            caption = "A";
+         font_size = 28;
+         font_color = 167,167,167;
+         preload = false;
+         }
+         x = 0;
+         y = 0;
+      };
+      deltat = 39;
    };
    ENDLOOP;
 } postt1;
@@ -77,290 +97,19 @@ text {
 
 text {
    caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_1;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_2;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_3;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_4;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_5;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_6;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_7;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_8;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_9;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_10;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_11;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_12;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_13;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_14;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_15;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_16;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_17;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_18;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_19;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_20;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_21;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_22;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_23;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_24;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_25;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_26;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_27;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_28;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_29;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_30;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_31;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_32;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_33;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_34;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_35;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_36;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_37;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_38;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_39;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_40;
-
-text {
-   caption = "A"; 
    font_size = 28;  
    font_color = 0,0,0;
    preload = true;
 } isi_text;
+
+stimulus_event {
+   picture {
+      text isi_text;
+      x = 0;
+      y = 0;
+   } isi_picture;
+   deltat = 9;
+} isi_stim;
 
 trial {
 	trial_duration = forever;
@@ -394,209 +143,35 @@ trial {
 
 trial {
 #	trial_type=first_response;
-	trial_duration=2500; 
+	trial_duration=2500;
 #	all_responses=true;
-      picture {text postt1_1; x = 0; y = 0;};
-		time=0;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_2; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_3; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_4; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_5; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_6; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_7; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_8; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_9; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_10; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_11; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_12; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_13; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_14; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_15; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_16; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_17; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_18; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_19; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_20; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_21; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_22; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_23; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_24; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_25; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_26; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_27; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_28; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_29; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_30; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_31; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_32; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_33; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_34; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_35; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_36; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_37; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_38; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_39; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_40; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-} postt1_trial;   
+ #   picture {
+ #      text postt1[0];
+ #      x = 0;
+ #      y = 0;
+ #   };
+ #   time = 0;
+ #   picture {
+ #      text isi_text;
+ #      x = 0;
+ #      y = 0;
+ #   };
+ #   deltat = 9;
+	# LOOP $j 39;
+	# 	picture {
+	# 		text postt1['$j+1'];
+	# 		x = 0;
+	# 		y = 0;
+	# 	};
+	# 	deltat = 39;
+	# 	picture {
+	# 		text isi_text;
+	# 		x = 0;
+	# 		y = 0;
+	# 	};
+ #      deltat = 9;
+	# ENDLOOP;
+} postt1_trial;
 
 trial {
 	stimulus_event {  
