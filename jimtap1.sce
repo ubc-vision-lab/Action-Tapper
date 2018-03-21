@@ -16,10 +16,13 @@ no_logfile = true;		# 'true' does NOT write log file to disk
 
 pcl_file = "jimtap1.pcl";
 
-default_max_responses = 1;
-default_all_responses = false;     #prevents unwanted key presses from affecting timing	
+default_max_responses = 2;
+default_all_responses = true;     #prevents unwanted key presses from affecting timing	
 
 begin;
+
+#MUST MATCH VALUE OF nStim in PCL!!
+$nStim = 40; # number of stimuli in target window + following 
 
 picture {} default;
 picture { bitmap { filename = "fixation.bmp"; }; x=0; y=0;} fixation; 
@@ -50,24 +53,6 @@ picture { bitmap { filename = "plet10.bmp";}; x=0; y=0;};
 picture { bitmap { filename = "plet11.bmp";}; x=0; y=0;};
 } pseudo;
 
-array {
-   LOOP $i 40;
-   text {
-      caption = "A";
-      font_size = 28;
-      font_color = 167,167,167;
-      preload = false;
-   };
-   ENDLOOP;
-} postt1;
-
-text {
-   caption = "A"; 
-   font_size = 28; 
-   font_color = 167,167,167;
-   preload = false;
-} rsvp;
-          
 text {
    caption = "A"; 
    font_size = 28;      
@@ -75,285 +60,25 @@ text {
    preload = false;
 } t1;
 
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_1;
+# These stimuli are preallocated for performance in postt1_trial
+# The LOOP allows us to create sequences of arbitrary length ($nStims) 
+# SDL must reference the text objects by name (hence "postt1_$k")
+# PCL can reference the text objects by indexing the array postt1
+array {
+	LOOP $i $nStim;
+	$k = '$i + 1'; # LOOP is zero indexed for some reason
+	text { caption = "A"; font_size = 28; 
+			 font_color = 167,167,167; preload = true; } "postt1_$k";
+	ENDLOOP;
+} postt1;
 
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_2;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_3;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_4;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_5;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_6;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_7;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_8;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_9;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_10;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_11;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_12;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_13;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_14;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_15;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_16;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_17;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_18;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_19;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_20;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_21;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_22;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_23;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_24;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_25;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_26;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_27;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_28;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_29;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_30;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_31;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_32;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_33;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_34;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_35;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_36;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_37;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_38;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_39;
-
-text {
-   caption = "A"; 
-   font_size = 28;      
-   font_color = 167,167,167;
-   preload = true;
-} postt1_40;
+array {
+	LOOP $i 12;
+	$k = '$i + 1';
+	text { caption = "A"; font_size = 28; 
+			 font_color = 167,167,167; preload = true; } "rsvp_$k";
+	ENDLOOP;
+} rsvp;
 
 text {
    caption = "A"; 
@@ -361,6 +86,13 @@ text {
    font_color = 0,0,0;
    preload = true;
 } isi_text;
+
+text {
+   caption = "!"; 
+   font_size = 20;      
+   font_color = 167,167,167;
+   preload = false;
+} fb_msg;
 
 trial {
 	trial_duration = forever;
@@ -381,227 +113,43 @@ trial {
 	} fix2_event;
 } fix2_trial;
 
-trial {
-	stimulus_event {  
-      picture {
-         text rsvp;  
-         x = 0; y = 0;
-      };
-		duration=29;
-		code="RSVP";
-	} rsvpdig_event;
-} rsvpdig_trial;   
+array {
+	LOOP $i 12;
+	$k = '$i + 1';
+	trial {
+		stimulus_event {  
+			picture {text "rsvp_$k"; x = 0; y = 0; };  
+			duration=8;
+			code="RSVP";
+		};
+	};
+	ENDLOOP;
+} rsvpdig_trials;
 
+# This trial displays the post T1 stimuli in rapid sequence
+# It can handle an arbitrary number of stimuli ($nStim)
+# The stimuli are assigned values in PCL by modifying postt1[]
+$rStim = '$nStim - 1'; # since postt1_1 must start at time 0
 trial {
-#	trial_type=first_response;
 	trial_duration=2500; 
-#	all_responses=true;
-      picture {text postt1_1; x = 0; y = 0;};
-		time=0;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
+   picture {text postt1_1; x = 0; y = 0;};
+	time=0;
+   picture {text isi_text; x = 0; y = 0;};
+	deltat=8;
 
-      picture {text postt1_2; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_3; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_4; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_5; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_6; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_7; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_8; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_9; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_10; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_11; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_12; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_13; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_14; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_15; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_16; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_17; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_18; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_19; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_20; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_21; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_22; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_23; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_24; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_25; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_26; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_27; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_28; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_29; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
-      picture {text postt1_30; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_31; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_32; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_33; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_34; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-
-      picture {text postt1_35; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_36; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_37; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_38; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_39; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-		
-      picture {text postt1_40; x = 0; y = 0;};
-		deltat=39;
-      picture {text isi_text; x = 0; y = 0;};
-		deltat=9;
-				
+	LOOP $i $rStim;
+		$j = '$i + 2';
+		picture {text "postt1_$j"; x = 0; y = 0;};
+		deltat=38;
+		picture {text isi_text; x = 0; y = 0;};
+		deltat=8;
+	ENDLOOP;			
 } postt1_trial;   
 
 trial {
 	stimulus_event {  
       picture default;  
-		duration=29;
+		duration=38;
 		code="RSVP";
 	} rsvpdot_event;
 } rsvpdot_trial;
@@ -625,8 +173,8 @@ trial {
 trial {
 	stimulus_event {
       picture default;
-		duration=69;
-		code="";
+		duration=38;
+		code="ISI";
 	} isi_event;
 } isi_trial;
 	
@@ -643,55 +191,30 @@ trial {
 
 trial {
 	stimulus_event {
-      picture {
-	   text { caption = "Too slow!";
-	          font_size=20;
-	   };
-         x = 0; y = 0;
-      };
-		duration=499;
-		code="T1";
-	} tooslow_event;
-} tooslow_trial;
+      picture default;
+		duration=1;
+		code="T1 START";
+	};
+} t1_start;
 
 trial {
 	stimulus_event {
-      picture {
-	   text { caption = "Didn't tap!";
-	          font_size=20;
-	   };
-         x = 0; y = 0;
-      };
-		duration=499;
-		code="T1";
-	} notap_event;
-} notap_trial;
+      picture default;
+		duration=1;
+		code="T1 END";
+	};
+} t1_end;
 
 trial {
 	stimulus_event {
-      picture {
-	   text { caption = "Too fast!";
-	          font_size=20;
-	   };
-         x = 0; y = 0;
+      picture { 
+			text fb_msg;  
+			x = 0; y = 0;
       };
 		duration=499;
 		code="T1";
-	} toofast_event;
-} toofast_trial;
-
-trial {
-	stimulus_event {
-      picture {
-	   text { caption = "Good tap!";
-	          font_size=20;
-	   };
-         x = 0; y = 0;
-      };
-		duration=499;
-		code="T1";
-	} justright_event;
-} justright_trial;
+	} fb_event;
+} fb_trial;
 
 trial {
 	trial_duration = forever;
@@ -699,9 +222,8 @@ trial {
 	stimulus_event {
      picture {
 	   text { caption = "Letter?";
-	          font_size=20;
-	   };
-         x = 0; y = 0;
+	          font_size=20; };
+      x = 0; y = 0;
       };
 		target_button=22;
 		code="T2 Response";
@@ -743,7 +265,20 @@ trial {
 	trial_type = correct_response;
 	stimulus_event {
      picture {
-	   text { caption = "INSTRUCTIONS\n\nEvery trial in this experiment will begin with the presentation of a fixation at the centre of the screen.\nWhen you are looking at fixation, press the spacebar to begin.\nYou will see a stream of 6-12 digits at the centre of the screen that you can ignore and then three asterisks.\nOnce the asterisks appear, you should press the spacebar within the next second.\nAcross the different trials, try to tap the spacebar at a variety of evenly-spaced intervals.\nAfter the asterisks, several more digits will be presented along with one letter that can be anything except for I, O, Q, P or Z.\nYou will then receive feedback about the timing of your tap and a prompt to report the letter you saw.\nYou can enter the letter as slowly as you like - concentrate on accuracy rather than speed.\nOnce you have typed the letter, the fixation will re-appear and you can start the next trial!\n\nPress the spacebar to start the experiment";
+	   text { caption = "INSTRUCTIONS
+								
+								Every trial in the experiment will begin a fixation cross on the screen.
+								When you are looking at the fixation, press the spacebar to begin.
+								You will first see a stream of 6-12 digits at the center of the screen followed by three asterisks and them some more digits.
+								The asterisks are a signal for you to tap the space bar twice within the next 2 seconds.
+								Try to space your taps out, but be sure that both taps been completed within 2 seconds.
+								While you are tapping, one letter will be presented among the digits.
+								Try to see it and type the letter on the keyboard at the end of the trial.
+								Once the digits have stopped streaming, you will receive feedback about the timing of your taps and a prompt to key in the letter you saw.
+								You can enter the letter as slowly as you like. Focus on getting the letter correct rather than quickly.
+								Once you have typed the letter the fixation will re-appear and you can start the next trial.
+								
+								Press the spacebar to start the experiment";
 	          font_size=18;
 	   };
          x = 0; y = 200;

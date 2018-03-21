@@ -1,0 +1,56 @@
+string fn;
+string confirm;
+int z; 
+
+loop z=1 until z==2 begin
+    number_text.set_caption ("Type in participant number (two digits max)...\n" );
+    number_text.redraw();
+    number_trial.present();
+    system_keyboard.set_max_length(12);
+    fn = system_keyboard.get_input();
+    number_text.set_caption ("Participant number is: " + fn + "\nIs this correct (y/n)?" );
+    number_text.redraw();
+    number_trial.present();
+    system_keyboard.set_max_length(1);
+    confirm = system_keyboard.get_input();
+    if (confirm=="y" || confirm=="Y") then
+        z=z+1
+    end;   
+end;
+
+output_file subj_out = new output_file;
+output_file master_out = new output_file;
+
+subj_out.open (path+fn+".dat");
+subj_out.print ("Trial#,Lag,Tap1 RT,Tap1 RT Bin,Tap2 RT,Tap2 RT Bin,T2,T2 Resp,Accuracy\n");
+
+master_out.open_append (path+"all.dat");
+
+sub
+   outstuff (int& block, array<int,2>& trialarr) # name of subroutine; type of argument passed to it; name
+begin                                            # of variable to be used in subroutine
+    int j;      
+    loop j=1 until j>nTrials begin
+        subj_out.print (string(j)+",");                # trial
+        subj_out.print (string(trialarr[j][2])+",");   # lag
+        subj_out.print (string(trialarr[j][3])+",");   # Tap1 RT
+        subj_out.print (string(trialarr[j][4])+",");   # Tap1 RT Bin
+        subj_out.print (string(trialarr[j][5])+",");   # Tap2 RT
+		  subj_out.print (string(trialarr[j][6])+",");   # Tap2 RT Bin
+        subj_out.print (string(trialarr[j][7])+",");   # T2
+		  subj_out.print (string(trialarr[j][8])+",");   # T2 resp
+		  subj_out.print (string(trialarr[j][9])+"\n");  # Accuracy
+		
+		  master_out.print (fn+",");               # subject
+		  master_out.print (string(j)+",");                # trial
+        master_out.print (string(trialarr[j][2])+",");   # lag
+        master_out.print (string(trialarr[j][3])+",");   # Tap1 RT
+        master_out.print (string(trialarr[j][4])+",");   # Tap1 RT Bin
+        master_out.print (string(trialarr[j][5])+",");   # Tap2 RT
+		  master_out.print (string(trialarr[j][6])+",");   # Tap2 RT Bin
+        master_out.print (string(trialarr[j][7])+",");   # T2
+		  master_out.print (string(trialarr[j][8])+",");   # T2 resp
+		  master_out.print (string(trialarr[j][9])+"\n");  # Accuracy
+        j=j+1;
+    end;
+end;

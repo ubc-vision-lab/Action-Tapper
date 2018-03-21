@@ -1,5 +1,5 @@
 <ver>18.3</ver>
-<efn>C:\Users\Jim\Desktop\test- force tap - 1nHalf\jimtap5.exp</efn>
+<efn>D:\1_DATA\UWA\2016\JimTap1\jimtap1.exp</efn>
 <author></author>
 <con>
 <pause>F10</pause>
@@ -34,11 +34,11 @@
 <lfn></lfn>
 </docs>
 <dp_list></dp_list>
-<dsd>C:\Users\Jim\Desktop\test- force tap - 1nHalf\stimuli</dsd>
+<dsd>D:\1_DATA\UWA\2016\JimTap1\stimuli</dsd>
 <dxv>8</dxv>
 <efs>
-<filename>C:\Users\Jim\Desktop\test- force tap - 1nHalf\jimtap1.sce</filename>
-<filename>C:\Users\Jim\Desktop\test- force tap - 1nHalf\jimtap1.pcl</filename>
+<filename>D:\1_DATA\UWA\2016\JimTap1\jimtap1.sce</filename>
+<filename>D:\1_DATA\UWA\2016\JimTap1\jimtap1.pcl</filename>
 </efs>
 <exclusive_mouse>1</exclusive_mouse>
 <exp_version></exp_version>
@@ -111,7 +111,7 @@
 <pindex>4294967295</pindex>
 </chan>
 </ip_chans>
-<lfd>C:\Users\Jim\Desktop\test- force tap - 1nHalf</lfd>
+<lfd>D:\1_DATA\UWA\2016\JimTap1</lfd>
 <lnb>0</lnb>
 <lno>0</lno>
 <log>
@@ -134,72 +134,10 @@
 <minpv>-1</minpv>
 <nam>Tap &amp; Target 1</nam>
 <one_processor>2</one_processor>
-<oports>
-<p>
-<cs></cs>
-<is></is>
-<os></os>
-<piai>COM6</piai>
-<pian>Serial Port</pian>
-<pihpn>COM6</pihpn>
-<pindex>2</pindex>
-</p>
-</oports>
+<oports></oports>
 <out_encrypt_key></out_encrypt_key>
 <pi_list></pi_list>
-<port_devices>
-<device>
-<parameters>
-<cts>0</cts>
-<dsrin>0</dsrin>
-<dsrout>0</dsrout>
-<dtr>disable</dtr>
-<rts>disable</rts>
-<set_fifo>1</set_fifo>
-<spd></spd>
-<spp></spp>
-<spr></spr>
-<sps></sps>
-</parameters>
-<piai>COM1</piai>
-<pian>Serial Port</pian>
-<pihpn>COM1</pihpn>
-</device>
-<device>
-<parameters>
-<cts>0</cts>
-<dsrin>0</dsrin>
-<dsrout>0</dsrout>
-<dtr>disable</dtr>
-<rts>disable</rts>
-<set_fifo>1</set_fifo>
-<spd></spd>
-<spp></spp>
-<spr></spr>
-<sps></sps>
-</parameters>
-<piai>COM4</piai>
-<pian>Serial Port</pian>
-<pihpn>COM4</pihpn>
-</device>
-<device>
-<parameters>
-<cts>0</cts>
-<dsrin>0</dsrin>
-<dsrout>0</dsrout>
-<dtr>disable</dtr>
-<rts>disable</rts>
-<set_fifo>0</set_fifo>
-<spd>8</spd>
-<spp>none</spp>
-<spr>57600</spr>
-<sps>1</sps>
-</parameters>
-<piai>COM6</piai>
-<pian>Serial Port</pian>
-<pihpn>COM6</pihpn>
-</device>
-</port_devices>
+<port_devices></port_devices>
 <rdl>
 <device>
 <abs_axis>
@@ -249,6 +187,53 @@
 <name>Keyboard</name>
 </device>
 <device>
+<abs_axis>
+<dead_zone>0</dead_zone>
+<max>1000</max>
+<min>-1000</min>
+<name>X-axis</name>
+<saturation>1</saturation>
+</abs_axis>
+<abs_axis>
+<dead_zone>0</dead_zone>
+<max>1000</max>
+<min>-1000</min>
+<name>Y-axis</name>
+<saturation>1</saturation>
+</abs_axis>
+<axis>
+<max>1000</max>
+<min>-1000</min>
+<name>X-axis</name>
+<restricted>1</restricted>
+<scale>1</scale>
+</axis>
+<axis>
+<max>1000</max>
+<min>-1000</min>
+<name>Y-axis</name>
+<restricted>1</restricted>
+<scale>1</scale>
+</axis>
+<axis>
+<max>1000</max>
+<min>-1000</min>
+<name>Wheel</name>
+<restricted>1</restricted>
+<scale>1</scale>
+</axis>
+<device_type>2</device_type>
+<dx_device_type>0</dx_device_type>
+<max_raw_pos>65535</max_raw_pos>
+<min_raw_pos>0</min_raw_pos>
+<name>HID-compliant mouse</name>
+</device>
+<device>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>Surface Type Cover Filter Device</name>
+</device>
+<device>
 <device_type>3</device_type>
 <dx_device_type>0</dx_device_type>
 <name>HID Keyboard Device</name>
@@ -293,7 +278,22 @@
 <dx_device_type>0</dx_device_type>
 <max_raw_pos>65535</max_raw_pos>
 <min_raw_pos>0</min_raw_pos>
-<name>HID-compliant mouse</name>
+<name>HID-compliant mouse 1</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>GPIO Button Driver</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>GPIO Button Driver 1</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Surface Type Cover</name>
 </device>
 <device>
 <axis>
@@ -656,7 +656,7 @@
 <offset>205</offset>
 <offset>219</offset>
 </idv>
-<sfn>C:\Users\Jim\Desktop\test- force tap - 1nHalf\jimtap1.sce</sfn>
+<sfn>D:\1_DATA\UWA\2016\JimTap1\jimtap1.sce</sfn>
 </sce>
 <sct>
 <capture_device>
