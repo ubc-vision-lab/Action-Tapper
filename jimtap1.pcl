@@ -169,6 +169,8 @@ loop xBlocks=1 until xBlocks>nBlocks begin             #actually, do the experim
 		  # Set up the target window + trailing stimuli
         if (trialtype[xTrials][1]==1) then
             rands2[1] = random(1,9);
+				postt1[1].set_caption(distid[rands2[1]]);
+				postt1[1].redraw();
             loop i=2 until i>nStim begin
                r=random(1,9);
                if (r != rands2[i-1]) then
@@ -192,6 +194,8 @@ loop xBlocks=1 until xBlocks>nBlocks begin             #actually, do the experim
         if (trialtype[xTrials][1]==1) then  
 				nRSVPs=random(6,maxRSVPs);
 				rands[1] = random(1,9);
+				rsvp[1].set_caption(distid[rands[1]]);
+				rsvp[1].redraw();
 				loop i=2 until i > nRSVPs begin
 					r=random(1,9);
 				   if (r != rands[i-1]) then
